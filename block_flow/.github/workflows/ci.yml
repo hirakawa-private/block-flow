@@ -1,0 +1,17 @@
+name: Flutter CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  analyze_and_test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: flutter-actions/setup-flutter@v4
+        with:
+          channel: stable
+      - run: flutter pub get
+      - run: flutter analyze
+      - run: flutter test
